@@ -1,0 +1,22 @@
+*{margin: 0;padding: 0; }
+html {
+  font-family:'nsr', 'Dotum', 'arial', 'sans-serif';
+    font-size: 14px;
+    line-height: 1.5;
+    color:#333;
+}
+
+body {
+    padding:0px;background: #f5f6f7;min-width: 1240px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+button {
+    outline: none;
+}
+a{text-decoration: none; color:#6b6b6b;}
+img{border:0;}
+ul{list-style: none;}

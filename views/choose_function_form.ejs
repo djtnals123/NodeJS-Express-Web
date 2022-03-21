@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="shortcut icon" href="/img/logo.png">
+<title>Sumin Lecture</title>
+<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/css/choose_func.css">
+<link rel="stylesheet" type="text/css" href="/css/font.css">
+<script src="/js/jquery.min.js"></script>
+<script type="text/javascript" nonce="<%=cspNonce%>">	
+$(document).ready(function () {
+	if('<%=msg%>')
+		alert('<%=msg%>');
+
+	$("#patient").on('click', function() {
+		alert('준비중입니다.');
+	});
+});
+
+</script>
+</head>
+<body>
+<!-- wrap :s -->
+	<div id="wrap">
+		<!-- header :s -->
+		<% include ./include/header/header_main.ejs %>
+		<!-- header :e -->
+
+		<!-- container :s -->
+		<div id="container">
+			<div id="content">
+				<h4 class="hide">기능 선택</h4>
+					<% if(user.auth.includes('ROLE_DOCTOR') || user.auth.includes('ROLE_ADMIN')) { %>
+					<a class="btn_wrap2" href="/board/list">
+						<span class="horizontal_align"><p><img src="/img/doctor.png"></p>의사<b>Doctor</b></span>
+					</a>
+					<% } if(user.auth.includes('ROLE_PATIENT') || user.auth.includes('ROLE_ADMIN')) { %>
+					<a id="patient" class="btn_wrap">
+						<span class="horizontal_align"><p><img src="/img/medicine.png"></p>환자<b>Patient</b></span>
+					</a>
+					<% } %>
+			</div>
+			
+		</div>
+		<!-- container :e -->
+
+		<!-- footer :s -->
+		<% include ./include/footer/footer_main.ejs %>
+		<!-- footer :e	 -->
+
+	
+
+	</div>
+<!-- wrap :e -->
+
+</body>
+</html>

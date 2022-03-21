@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="shortcut icon" href="/img/logo.png">
+<title>Sumin Lecture</title>
+<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/css/join.css">
+<link rel="stylesheet" type="text/css" href="/css/font.css">
+<script src="/js/jquery.min.js"></script>
+<script type="text/javascript" nonce="<%=cspNonce%>">
+$(document).ready(function () {
+	if('<%=locals.msg%>')
+		alert('<%=locals.msg%>');
+	$("#cancelBtn").on('click', function() {
+		location.href='/login';
+	});
+});
+</script>
+<style type="text/css" nonce="<%=cspNonce%>">
+	#joinFrm label.error {
+		color: #ff0000;
+		display: none;
+	}
+
+	.text_area {
+		letter-spacing:0.1em;word-spacing: 0.2em;line-height: 1.5
+	}
+</style>
+<title>Sumin Lecture</title>
+</head>
+<body>
+	<!-- wrap :s -->
+	<div id="wrap">
+		<!-- header :s -->
+		<% include ../include/header/header_main.ejs %>
+		<!-- header :e -->
+
+		<!-- container :s -->
+		<div id="container">
+			<div id="content1">
+				<h4>개인정보처리취급방침</h4>
+				<fieldset class="text_area">
+				가나다라마바사아자차카타파하
+				
+				</fieldset>
+				<form action="/account/agree" id="agreeFrm" name="agreeFrm" method="post">
+					<label for="agree">동의합니다.</label><input id="agree" name="agree" type="checkbox">
+					<fieldset class="login_form">
+						<input id="cancelBtn" type="button" title="취소" alt="취소" value="취소" class="btn_cancel">
+						<input id="agreeBtn" type="submit" title="전송" alt="전송" value="전송" class="btn_login">
+					</fieldset>
+					<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+				</form>
+			</div>
+		</div>
+		<!-- container :e -->
+
+		<!-- footer :s -->
+		<% include ../include/footer/footer_main.ejs %>
+		<!-- footer :e	 -->
+
+	
+
+	</div>
+<!-- wrap :e -->
+</body>
+</html>

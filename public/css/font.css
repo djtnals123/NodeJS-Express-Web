@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+/* 나눔 스퀘어체 */
+@font-face {
+font-family: 'nsr';	
+font-weight: normal;
+font-style: normal;
+ src: url('../font/nanum_square_r.eot');
+ src: url('../font/nanum_square_r.eot?#iefix') format('embedded-opentype'), 
+       url('../font/nanum_square_r.woff') format('woff');
+}
+
+@font-face {
+font-family: 'nsr';	
+font-weight:600;
+font-style: normal;
+ src: url('../font/nanum_square_b.eot');
+ src: url('../font/nanum_square_b.eot?#iefix') format('embedded-opentype'), 
+       url('../font/nanum_square_b.woff') format('woff');
+}
+
+/* 나눔 바른고딕 */
+@font-face {
+font-family: 'nbg';	
+font-weight: normal;
+font-style: normal;
+ src: url('../font/NanumBarunGothic.eot');
+ src: url('../font/NanumBarunGothic.eot?#iefix') format('embedded-opentype'), 
+       url('../font/NanumBarunGothic.woff') format('woff');
+}
+
+/* 나눔 명조 */
+@font-face {
+font-family: 'nmj';	
+font-weight: normal;
+font-style: normal;
+ src: url('../font/NanumMyeongjo.eot');
+ src: url('../font/NanumMyeongjo.eot?#iefix') format('embedded-opentype'), 
+       url('../font/NanumMyeongjo.woff') format('woff');
+}
+
+
+/* 본고딕 */
+@font-face{
+	font-family:'ntk';
+	font-weight:normal;
+	font-style: normal;
+	src:url("../font/notokr-demilight.eot");
+	src:url("../font/notokr-demilight.eot?#iefix") format('embedded-opentype'),
+		url("../font/notokr-demilight.woff2") format('woff2'),
+		url("../font/notokr-demilight.woff") format('woff');
+}
+
+
+@font-face{
+	font-family:'ntk';
+	font-weight:400;
+	font-style: normal;
+	src:url("../font/notokr-regular.eot");
+	src:url("../font/notokr-regular.eot?#iefix") format('embedded-opentype'),
+		url("../font/notokr-regular.woff2") format('woff2'),
+		url("../font/notokr-regular.woff") format('woff');
+}
+
+@font-face{
+	font-family:'ntk';
+	font-weight:700;
+	font-style: normal;
+	src:url("../font/notokr-bold.eot");
+	src:url("../font/notokr-bold.eot?#iefix") format('embedded-opentype'),
+		url("../font/notokr-bold.woff2") format('woff2'),
+		url("../font/notokr-bold.woff") format('woff');
+}

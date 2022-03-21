@@ -1,0 +1,133 @@
+
+
+/* DEFAULT STYLE */
+*{margin: 0;padding: 0; }
+html {font-family:'nsr', 'Dotum', 'arial', 'sans-serif';font-size: 14px;line-height: 1.5;color:#333;}
+html {
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	}
+
+body {padding:0px;background: #f5f6f7;}
+img {vertical-align: middle;}
+button {outline: none;}
+a{text-decoration: none; color:#6b6b6b;}
+ul{list-style: none;}
+
+
+
+
+/*! signIn.css v1 */
+#wrap {position:relative;width:100%;min-height:100%;margin: 0 auto;}
+#header {position: relative;padding:62px 0 0;margin: 0 auto/*!important*/; }
+#header .h_logo {overflow:hidden; display:block; width:200px; height:45px; margin: 0 auto ;line-height:999px; background: url(../img/signIn/h_logo2.png) no-repeat;}
+
+#container {margin:0 auto; padding-bottom: 0;}
+#content {padding:10px;}
+
+.mt_50 {margin-top:50px;}
+fieldset, img {border: 0; }  
+label {display:block;cursor:pointer;}
+.login_form {clear:both;}
+.blind {font-size:0;line-height: 0;position: absolute;top: 0;left: 0;visibility: hidden;overflow: hidden;width: 1px;height: 1px;}
+.input_row {position:relative;height:24px;margin:0 0 10px;padding:10px 15px;border:solid 1px #dadada;background:#ffffff;}
+.input_box {display:block;overflow:hidden;}
+.lbl {position: absolute;top: 16px;left: 15px;font-size: 15px;line-height: 16px;z-index: 8;color:#999; }
+.int {position: relative; font-size: 15px;line-height: 12px;z-index: 9;width: 100%;height: 12px;padding: 7px 0 6px;color: #000;border: none;background: #ffffff;-webkit-appearance: none;}   
+.btn_login {display:block;width:100%;height:45px;line-height: 45px;  margin:20px 0 0 0; font-size:16px; font-weight:400;padding-top:1px;cursor:pointer;
+    text-align:center; color:#fff; border:none; border-radius:0; background-color: #0699cc; -webkit-appearance:none;}    
+.login_check {position:relative; margin-bottom:10px;display:block;height:22px;}
+.login_check_box input {position:absolute;top:1px;left:0;width:20px;height:20px;cursor:pointer;}
+.login_check_box label {position:absolute;top:0;left:0;height:22px;padding-left:26px;cursor:pointer;color:#333;font-size:13px; line-height:22px;}
+.find_info {overflow: hidden; font-size:14px;line-height:14px;padding-top:65px;text-align:center;color:#555;font-weight: 600;}
+.find_info ul{margin: 0 auto;display: inline-block;}
+.find_info li{float:left;padding-right: 10px; margin-right: 10px ;  background: url(../img/signIn/bar.png) no-repeat right 4px;}
+.find_info li:last-child{padding-right:0px; margin-right:0px ;  background:none;}
+
+#footer {position:relative;margin:0 auto;padding:40px 20px;text-align:center;}
+#footer address {font: 9px/14px Verdana;}
+#footer .f_logo {margin:10px auto;width:112px;height: 25px;background: url(../img/signIn/f_logo.png) no-repeat }
+
+
+/* card  */
+#nav_wrap {height:50px;line-height:50px;background-color: #3b3f4d; }
+#nav_wrap:after{clear: both; content: ""; display: block;}
+#nav_wrap li{float: left;width: 50%;text-align: center;}
+#nav_wrap li a{position: relative;display:block;color:#fff;font-weight: bold;}
+#nav_wrap li a.ov:after{display:inline-block;    content: "";position:absolute;left:0;bottom:0px;width:100%;height:4px;background:#5193ec;}
+#nav_wrap li a:link{color:#fff;font-weight: bold;}
+#nav_wrap li a:activ{color:#000;}
+
+#info_wrap {position: relative;padding:0 20px;height:70px;line-height:70px;background:#dcf0f9;}
+#info_wrap p{margin:0;color:#000;font-weight:bold;font-size: 18px;letter-spacing: -1px;}
+#info_wrap p span{text-decoration: underline;padding-right:3px;color:#4a4a4a;}
+#info_wrap #LogOut , #info_wrap #LogIn{position:absolute;top:0;right:20px;}
+#info_wrap #LogOut a , #info_wrap #LogIn a{display: inline-block; padding: 0 10px;height: 28px;line-height: 28px; background-color: #fff;font-size: 12px;border-radius: 50px;color: #000;}
+#info_wrap #LogOut a:before , #info_wrap #LogIn a:before{display: inline-block;content: "";margin-right: 3px;padding-bottom: 2px;width: 14px;height: 15px;background: url(../img/signIn_bul.png) no-repeat;background-size: contain;vertical-align: middle;}
+
+h2.card_ti {display:block;height:64px;line-height:64px;color:#fff;text-align:center;background-color: #e82d58;letter-spacing: -1px;}
+.card_wrap {padding:20px 15px; background-color: #fff;} 
+.card_wrap ul{overflow: hidden;display:inline-block;}
+.card_wrap ul li{  position: relative;padding-left: 20px;line-height: 27px;}
+.card_wrap ul li:before{position: absolute;top: 5px; left: 0;content: "";width: 10px;height: 10px; background:#fff;border: 3px solid #2d71c3;border-radius: 50px;}
+.card_wrap ul li strong{display: inline-block;width:80px;}
+.card_wrap ul li span{text-decoration: underline;}
+
+
+.tbl_basic{display:table;margin:10px 0;width:100%;border-top:1px solid #a0bfe8;border-collapse:separate;border-collapse:collapse;background:#fff;}
+.tbl_basic tbody th{padding:10px;vertical-align:middle;word-wrap:break-word;word-break:keep-all;color:#fff;border-bottom:1px solid #87cce4;background:#22aede;}
+.tbl_basic tbody td{padding:10px;color:#464646;border-bottom:1px solid #91cce0; vertical-align:middle;text-align: center;}
+.tbl_basic thead tr th{padding:10px;color:#fff;border-left:1px solid #fff;border-bottom:1px solid #fff; color:#fff;font-size:15px;background:#22aede;}
+
+.card_txt {margin-top:20px;text-align: center;}
+.card_txt p{margin-bottom:5px;font-size: 12px;line-height: 17px;} 
+
+
+#btn_wrap {overflow: hidden;}
+#btn_wrap:after{clear: both;content: ""; display: block;}
+#btn_wrap li {width:48% ;height:142px;margin:1%;float: left;}
+#btn_wrap li a{overflow: hidden;display:block;width:100%;height:142px;border-radius: 5px;color:#fff;text-align: center;
+font-weight: bold;}
+#btn_wrap li a.btn1{background:#4bb8bc;}
+#btn_wrap li a.btn1 span{display: block;width:33px;height: 37px;margin: 24px auto;background: url(../img/btn_1.png) no-repeat;background-size: contain;}
+#btn_wrap li a.btn2{background:#fe5252;}
+#btn_wrap li a.btn2 span{display: block;width:36px;height: 39px;margin: 24px auto;background: url(../img/btn_2.png) no-repeat;background-size: contain;}
+#btn_wrap li a.btn3{background:#6295da;}
+#btn_wrap li a.btn3 span{display: block;width:33px;height: 44px;margin: 24px auto;background: url(../img/btn_3.png) no-repeat;background-size: contain;}
+
+.mainSection {margin-bottom:50px;}
+
+/* �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 */
+.paginate {margin:20px 0; text-align:center; line-height:18px; }
+.paginate:after { content:""; display:block; clear:both; }
+.paginate li{display:inline-block;list-style:none;vertical-align:middle;}
+.paginate li a {display:block; width:50px; height:42px;margin:4px 1px 10px 10px; background:#fff; border:1px solid #d2d2d2; border-radius:3px; line-height:32px; padding-top:8px; text-align:center; vertical-align:middle;}
+.paginate .dir a{background:#f0f0f0 url(../img/layout/bg_pg_num.gif) no-repeat; font-size:0;line-height:0;vertical-align:middle;}
+.paginate .dir a span {height:0; font-size:0;}
+.paginate .dir.first a{background-position:8px 9px;}
+.paginate .dir.last a{background-position:-32px 9px;}
+.paginate .dir.prev a{background-position:-72px 18px;}
+.paginate .dir.next a{background-position:-110px 18px;}
+.paginate .dir a:hover,
+.paginate .dir a:focus,
+.paginate .dir a:active{background-color:#efefef;}
+.paginate li.active a,
+.paginate li a:hover, 
+.paginate li a:focus,
+.paginate li a:active{background-color:#55555b;border:1px solid #55555b; color:#fff;text-decoration:none;}
+.paginate span.on { display:inline-block; width:34px; height:26px; padding:8px 0 0 0; border:1px solid #55555b; text-align:center; background:#55555b; color:#fff; text-decoration:none; vertical-align:middle; }
+
+
+.search_info {width:100%;display:inline-block;list-style:none; vertical-align:middle; text-align: center;}
+.search_info .inputText{width:30%;height:30px;vertical-align:middle}
+.search_info select {width:30%;height:34px; text-align:center; font-size:13px; text-align:center; vertical-align:middle; border-radius:1;}
+.search_info .submitbtn {vertical-align:middle; width:20%;height:34px;font-size:15px; font-weight:400;padding-top:1px;cursor:pointer;
+	text-align:center; color:#fff; border:solid 1px #e82d58; border-radius:0; background-color: #e82d58; -webkit-appearance:none;}
+
+
+.subbtn {width:100%;height:30px;font-size:18px; font-weight:400;padding-top:1px;cursor:pointer;
+	text-align:center; color:#000000; border:solid 1px #aaaaaa; border-radius:0; background-color: #ffffff; -webkit-appearance:none;}
+#searchDiv {text-align:center;}
+
+.tbl_basic tbody .medicineList:hover td{background-color: #ffff99;}

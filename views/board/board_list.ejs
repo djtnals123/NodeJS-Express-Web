@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="shortcut icon" href="/img/logo.png">
+<title>Sumin</title>
+<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/css/font.css">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="/js/submenu.js"></script>
+<script nonce="<%=cspNonce%>">
+	$(document).ready(function () {
+		$("#writeBtn").on('click', function() {
+			location.href='/board/write';
+		});
+	});
+</script>
+<style type="text/css" nonce="<%=cspNonce%>">
+	.tbl_basic {
+		table-layout:fixed;
+	}
+	.search_info {
+		background: #ffffff;
+	}
+</style>
+</head>
+
+<body>
+<!-- wrap :s -->
+	<div id="wrapper">
+
+		<!-- header :s -->
+		<% include ../include/header/header.ejs %>
+		<!-- header :e -->
+
+
+		<!-- contentsWrap :s -->
+		<div id="contentsWrap">
+
+			<!-- lnbWrap :s -->
+			<div id="lnbWrap">
+				<div id="lnb_title">
+					<h2>게시판</h2>
+				</div>			
+				<ul id="lnb">
+					<li class="on"><a href="#">공지사항</a></li>
+					<li ><a href="#">자유게시판</a></li>
+				</ul>
+			</div>
+			<!-- lnbWrap :e -->
+
+			<!-- container :s -->
+			<div id="container">
+
+				<div class="location">
+					<span class="home"><a href="#"><img src="/img/layout/ico_home.png" alt="홈"></a></span>
+					<span class="arrow">&gt;</span>
+					<a href="#"> <span class="first">게시판</span></a>
+					<span class="arrow">&gt;</span>
+					<a href="#"> <span>공지사항</span></a>
+				</div>
+
+				<h3 id="contTi">공지 사항</h3>
+
+				<!-- 컨텐츠영역 txt :s -->
+				<div id="txt">
+					
+					<h4>공지사항</h4>
+					<!-- table :s -->
+					<table class="tbl_basic">
+			            <caption>
+			                <strong>공지사항</strong>
+			                <details>
+			                    <summary>공지사항</summary>
+			                </details>
+			            </caption>
+		                <thead>
+		                    <tr>
+		                        <th class="trw" width=30>No</th>
+		                        <th class="trw">제목</th>
+		                        <th class="trw" width=100>작성자</th>
+		                        <th class="trw" width=120>작성일</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+						<% list.forEach(function(board){ %>
+							<tr>
+								<td><%=board.board_id %></td>
+								<td><a href="/board/read?bid=<%=board.board_id %>"><%=board.title %></a></td>
+								<td><%=board.writer%></td>
+								<td><%=board.new_created_date%></td>
+							</tr>
+								
+						<% }); %>
+		                </tbody>
+		            </table>
+		            <!-- table :e -->
+					
+		            <!-- paging & search :s -->
+		            <ul class="paginate">
+						<% if(pm.prev) { %>
+						<li class="dir prev"><a href="list?<%=criteria.getQueryString(pm.startPage-1)%>" title="이전페이지로 이동">«</a></li>
+						<% } %>
+						<% for(var i=pm.startPage; i <= pm.endPage; i++){ %>
+							<%if(i == pm.curPage) { %>
+						<li class="active">
+							<a href="list?<%=criteria.getQueryString(i)%>" title="<%=i%>페이지"><%=i%></a>
+						</li>		
+						<% } else { %>
+						<li>
+							<a href="list?<%=criteria.getQueryString(i)%>" title="<%=i%>페이지"><%=i%></a>
+						</li>
+						<% } } %>
+						<% if(pm.next) { %>
+						<li class="dir next"><a href="list?<%=criteria.getQueryString(pm.endPage+1)%>"title="다음페이지로 이동">»</a></li>
+						<% } %>
+					</ul>
+					<div id="searchtab">
+					<form class="search_info">
+					<li>
+						<select name="option" class="searchOption">
+							<option value="title" <% if(criteria.option == 'title') {%>selected<% } %>>제목</option>
+							<option value="content" <% if(criteria.option == 'content') {%>selected<% } %>>내용</option>
+							<option value="title+content" <% if(criteria.option == 'title+content') {%>selected<% } %>>제목+내용</option>
+							<option value="writer" <% if(criteria.option == 'writer') {%>selected<% } %>>작성자</option>
+						</select>
+						<input type="text" name="keyword" class="inputText" value="<%=criteria.keyword %>" class="inputText" placeholder="조건 입력"/>
+						<input type="submit" id="searchButton" class="submitbtn" value="검색" class="searchBtn"/>
+						<input type="hidden" name="perPage" value="<%=criteria.perPage%>"/>
+					</li>
+					</form>
+					</div>
+		            <!-- paging & search :e -->
+					<span class="rightButton" >
+						<button id="writeBtn" type="button" class="mainbtn">게시판 작성</button>
+					</span>
+				</div>
+				<!-- 컨텐츠영역 txt :e -->
+
+			</div>
+			<!-- container :e -->
+
+		</div>
+		<!-- contentsWrap :e -->
+
+		
+		<!-- footerWrap :s -->
+		<% include ../include/footer/footer.ejs %>
+		<!-- footerWrap :e -->
+	</div>
+</body>
+</html>

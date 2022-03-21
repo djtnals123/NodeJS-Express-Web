@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="shortcut icon" href="/img/logo.png">
+<title>Sumin</title>
+<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/css/font.css">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="/js/submenu.js"></script>
+<script nonce="<%=cspNonce%>">
+	$(document).ready(function () {
+		$("#modifyBtn").on('click', function() {
+			location.href='/board/modify?bid=<%=board.board_id%>';
+		});  
+		
+		$("#deleteBtn").on('click', function() {
+			location.href='/board/delete?bid=<%=board.board_id%>';
+		});
+
+		$("#listBtn").on('click', function() {
+			location.href='/board/list';
+		});
+
+		
+	});
+</script>
+<style type="text/css" nonce="<%=cspNonce%>">
+	.tbl_basic {table-layout:fixed;}
+	.search_info {background: #ffffff;}
+	#writer {text-align: left;}
+	#content {text-align: left; vertical-align: top;}
+</style>
+</head>
+
+<body>
+<!-- wrap :s -->
+	<div id="wrapper">
+
+		<!-- header :s -->
+		<% include ../include/header/header.ejs %>
+		<!-- header :e -->
+
+
+		<!-- contentsWrap :s -->
+		<div id="contentsWrap">
+
+			<!-- lnbWrap :s -->
+			<div id="lnbWrap">
+				<div id="lnb_title">
+					<h2>게시판</h2>
+				</div>			
+				<ul id="lnb">
+					<li class="on"><a href="#">공지사항</a></li>
+					<li ><a href="/board/list">자유게시판</a></li>
+				</ul>
+			</div>
+			<!-- lnbWrap :e -->
+
+			<!-- container :s -->
+			<div id="container">
+
+				<div class="location">
+					<span class="home"><a href="#"><img src="/img/layout/ico_home.png" alt="홈"></a></span>
+					<span class="arrow">&gt;</span>
+					<a href="#"> <span class="first">게시판</span></a>
+					<span class="arrow">&gt;</span>
+					<a href="#"> <span>게시판 작성</span></a>
+				</div>
+
+				<h3 id="contTi">게시판 작성</h3>
+
+				<!-- 컨텐츠영역 txt :s -->
+				<div id="txt">
+					
+					<h4>게시판 작성</h4>
+					<!-- table :s -->
+					<table class="tbl_basic">
+			            <caption>
+			                <strong>게시판 작성</strong>
+			                <details>
+			                    <summary>게시판 내용</summary>
+			                </details>
+			            </caption>
+		                <tbody>
+							<tr>
+								<td class="trw" width="200">제목</td>
+								<td><%=board.title%></td>
+							</tr>
+							<tr>
+								<td class="trw" width="200">작성자</td>
+								<td id="writer">
+									<%=board.writer%>
+								</td>
+							</tr>
+							<% if(board.attachment) { %>
+							<tr>
+								<td class="trw" width="200">첨부파일</td>
+								<td>
+									<a href="/download/<%=board.attachment%>" 
+									id="download"><%= board.originalFileName %></a>
+								</td>
+							</tr>
+							<% } %>
+							<tr>
+								<td class="trw" width="200" height="400">내용</td>
+								<td id="content">
+									<%=board.content%>
+								</td>
+							</tr>
+		                </tbody>
+		            </table>
+		            <!-- table :e -->
+					
+		            <!-- paging & search :s -->
+					<% if(board.writer == user.id) { %>
+					<input type="button" value="수정" id="modifyBtn" class="subbtn3">
+					<input type="button" value="삭제" id="deleteBtn" class="subbtn3">
+					<% } %>
+					<span class="rightButton" >
+						<button type="button" class="mainbtn" id="listBtn">목록</button>
+					</span>
+		            <!-- paging & search :e -->
+				</div>
+				<!-- 컨텐츠영역 txt :e -->
+
+			</div>
+			<!-- container :e -->
+
+		</div>
+		<!-- contentsWrap :e -->
+
+		
+		<!-- footerWrap :s -->
+		<% include ../include/footer/footer.ejs %>
+		<!-- footerWrap :e -->
+	</div>
+</body>
+</html>

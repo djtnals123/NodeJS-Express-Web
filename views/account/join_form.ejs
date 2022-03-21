@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="shortcut icon" href="/img/logo.png">
+<title>ADRM</title>
+<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/css/join.css">
+<link rel="stylesheet" type="text/css" href="/css/font.css">
+<script src="/js/jquery.min.js"></script>
+<script nonce="<%=cspNonce%>">
+$(document).ready(function () {
+	history.replaceState({}, null, location.pathname);
+	if(location.pathname.indexOf('modify') == -1)
+		url = "/account/register/";
+	else {
+		url = "/account/modify";
+		$("#id").attr("disabled",true);
+	}
+	$("#submit").on('click', function() {
+		submit(url);
+	});
+	$("#cancelBtn").on('click', function() {
+		location.href='/account/agree';
+	
+	});
+});
+	
+function submit(url) {
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: $('#joinFrm').serialize(),
+        success: function(redirect){ 
+			location.href=redirect;
+        },
+        error: function(err){
+			if(err.status == 500)
+				alert('Error');
+			else if(err.status == 401)
+	            alert(err.responseJSON);
+        }
+  	});
+}
+
+</script>
+<style type="text/css" nonce="<%=cspNonce%>">
+	#joinFrm label.error {
+		color: #ff0000;
+		display: none;
+	}
+</style>
+<title>Sumin Lecture</title>
+</head>
+<body>
+	<!-- wrap :s -->
+	<div id="wrap">
+		<!-- header :s -->
+		<% include ../include/header/header_main.ejs %>
+		<!-- header :e -->
+
+		<!-- container :s -->
+		<div id="container">
+			<div id="content">
+				<h4>
+				<% if(modify) { %>
+					회원정보 수정
+				<% } else { %> 
+					회원가입 
+				<% } %>
+				</h4>
+				<form id="joinFrm" name="joinFrm" target="_top" >
+					<table class="tbl_basic center">
+						<tbody>
+							<tr>
+								<td class="trw1" >ID</td>
+								<td class="trw" >
+									<div class="join_input_row">
+										<span class="input_box">
+											<label for="id" id="label_id_area" class="lbl">ID</label>
+											<input type="text" id="id" name="id" class="int" maxlength="30" value="<%=modify.id%>">
+										</span>
+									</div>
+									<label for="id" class="error"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="trw1" >비밀번호</td>
+								<td class="trw" >
+									<div class="join_input_row">
+										<span class="input_box">
+											<label for="pw" id="label_pw_area" class="lbl">Password</label>
+											<input type="password" id="pw" name="pw" class="int" maxlength="30" >
+										</span>
+									</div>
+									<label for="pw" class="error"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="trw1" >비밀번호 확인</td>
+								<td class="trw" >
+									<div class="join_input_row">
+										<span class="input_box">
+											<label for="pw" id="label_pw_area" class="lbl">Password</label>
+											<input type="password" id="confirm_pw" name="confirm_pw" class="int" maxlength="30" >
+										</span>
+									</div>
+									<label for="confirm_pw" class="error"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="trw1" >E-MAIL</td>
+								<td class="trw" >
+									<div class="join_input_row">
+										<span class="input_box">
+											<label for="id" id="label_id_area" class="lbl">ID</label>
+											<input type="text" id="email" name="email" class="int" maxlength="30" value="<%=modify.email%>">
+										</span>
+									</div>
+									<label for="email" class="error"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="trw1" >이름</td>
+								<td class="trw" >
+									<div class="join_input_row">
+										<span class="input_box">
+											<label for="id" id="label_id_area" class="lbl">ID</label>
+											<input type="text" id="name" name="name" class="int" maxlength="30" value="<%=modify.name%>">
+										</span>
+									</div>
+									<label for="name" class="error"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="trw1" >병원선택</td>
+								<td class="trw" >
+									<select id="hospital" name="hospital" class="select_box">
+									<% if(modify.hospital == "K") { %>
+										<option value="S">서울대학교 병원</option>
+										<option value="K" selected>고려대학교 병원</option>
+									<% } else { %>
+										<option value="S" selected>서울대학교 병원</option>
+										<option value="K">고려대학교 병원</option>
+									<% } %>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="trw1" >회원형태</td>
+								<td class="trw" >
+									<div class="none_input_row" id="select_roll">
+									<% if(modify && modify.auth.includes("ROLE_PATIENT")) { %>
+										<span class="chkbox_area"><input id="role1" type="checkbox" name="roles" value="1" tabindex="9" class="chkbox" checked>환자</span>
+									<% } else { %>
+										<span class="chkbox_area"><input id="role1" type="checkbox" name="roles" value="1" tabindex="9" class="chkbox">환자</span>
+									<% } %>
+
+									
+									<% if(modify && modify.auth.includes("ROLE_DOCTOR")) { %>
+										<span class="chkbox_area"><input id="role2" type="checkbox" name="roles" value="2" tabindex="9" class="chkbox" checked>의사</span>
+									<% } else { %>
+										<span class="chkbox_area"><input id="role2" type="checkbox" name="roles" value="2" tabindex="9" class="chkbox">의사</span>
+									<% } %>
+									</div>
+									<label for="roles" class="error"></label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<fieldset class="login_form">
+						<%if(modify) { %>
+						<input type="button" id="submit" title="회원정보 수정" alt="회원정보 수정" value="회원정보 수정" class="btn_login">
+						<% } else { %>
+						<input type="button" id="submit" title="회원가입" alt="회원가입" value="회원가입" class="btn_login">		
+						<% } %>
+						<input id="cancelBtn" type="button" title="취소" alt="취소" value="취소" class="btn_cancel">
+					</fieldset>
+					<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+				</form>
+			</div>
+			
+		</div>
+		<!-- container :e -->
+
+		<!-- footer :s -->
+		<% include ../include/footer/footer_main.ejs %>
+		<!-- footer :e	 -->
+
+	
+
+	</div>
+<!-- wrap :e -->
+</body>
+</html>

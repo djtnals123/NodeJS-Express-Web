@@ -1,0 +1,38 @@
+<div id="headerWrap">
+	<div id="header">
+
+		<h1 id="logo"><a href="/choose_function"><img src="/img/layout/logo.png" alt="서울대학교 병원" /></a></h1>
+		
+		<!-- gnbWrap :s -->
+		<div id="gnbWrap">	
+			<div id="gnb">
+				<ul class="menu">
+					<% if(user.auth.includes('ROLE_ADMIN')) { %>
+						<li><a href="/admin/user_list">사용자 관리</a>
+							<ul class="sub">
+								<li><a href="/admin/user_list">계정 관리</a></li>
+							</ul>
+						</li>
+					<% } %>
+					<li><a href="#">게시판</a>
+						<ul class="sub">
+							<li><a href="#">공지사항</a></li>
+						</ul>
+						<ul class="sub">
+							<li><a href="/board/list">자유게시판</a></li>
+						</ul>
+					</li>
+				</ul>
+			 </div>	
+		 </div>	
+		<!-- gnbWrap :e -->
+		
+		<div id="globalWrap">
+			<ul class="global">
+				<li>안녕하세요. <%=user.id%>님</li>
+				<li><a href="/account/modify"> 회원정보수정</a></li>
+				<li><a href="/logout"> 로그아웃</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

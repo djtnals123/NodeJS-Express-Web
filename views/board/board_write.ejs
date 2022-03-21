@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="shortcut icon" href="/img/logo.png">
+<title>Sumin</title>
+<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/css/font.css">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="/js/submenu.js"></script>
+<script type="text/javascript" nonce="<%=cspNonce%>">
+	$(document).ready(function () {
+		$("#submit").on('click', function() {
+			write();
+		});
+		$("#cancelBtn").on('click', function() {
+			cancel();
+		});
+	});
+		
+	function write() {
+		if(location.pathname.indexOf('modify') == -1)
+			url = "/board/write";
+		else 
+			url = "/board/modify";
+		$.ajax({
+			url: url,
+			type: "POST",
+			data: new FormData($("#writeFrm")[0]),
+			processData: false,
+			contentType: false,
+			headers: {"X-CSRF-TOKEN": $("#writeFrm input[name='_csrf']").val()},
+			success: function(redirect){
+				location.href=redirect;
+			},
+			error: function(err){
+	            alert(err.responseJSON);
+			}
+		});
+	}
+	function cancel() {
+		if(location.pathname.indexOf('modify') == -1)
+			location.href='/board/list';
+		else
+			location.href='/board/read?bid=' + $('input[name=bid]').val();;
+	}
+</script>
+<style type="text/css" nonce="<%=cspNonce%>">
+	.tbl_basic {table-layout:fixed;}
+	.inputText2 {width:100%;}
+	#writer {text-align: left;}
+	#content {text-align: left; vertical-align: top;}
+	#file {text-align: left;}
+</style>
+</head>
+
+<body>
+<!-- wrap :s -->
+	<div id="wrapper">
+
+		<!-- header :s -->
+		<% include ../include/header/header.ejs %>
+		<!-- header :e -->
+
+
+		<!-- contentsWrap :s -->
+		<div id="contentsWrap">
+
+			<!-- lnbWrap :s -->
+			<div id="lnbWrap">
+				<div id="lnb_title">
+					<h2>게시판</h2>
+				</div>			
+				<ul id="lnb">
+					<li class="on"><a href="#">공지사항</a></li>
+					<li ><a href="#">자유게시판</a></li>
+				</ul>
+			</div>
+			<!-- lnbWrap :e -->
+
+			<!-- container :s -->
+			<div id="container">
+
+				<div class="location">
+					<span class="home"><a href="#"><img src="/img/layout/ico_home.png" alt="홈"></a></span>
+					<span class="arrow">&gt;</span>
+					<a href="#"> <span class="first">게시판</span></a>
+					<span class="arrow">&gt;</span>
+					<a href="#"> <span>게시판 작성</span></a>
+				</div>
+
+				<h3 id="contTi">게시판 작성</h3>
+
+				<!-- 컨텐츠영역 txt :s -->
+				<div id="txt">
+					<form id="writeFrm" enctype="multipart/form-data">
+					
+						<h4>게시판 작성</h4>
+						<!-- table :s -->
+						<table class="tbl_basic">
+							<caption>
+								<strong>게시판 작성</strong>
+								<details>
+									<summary>게시판 내용</summary>
+								</details>
+							</caption>
+							<tbody>
+								<tr>
+									<td class="trw" width="200">제목</td>
+									<td>
+										<input class="inputText2" type="text" name="title" value="<%=modify.title%>">
+									</td>
+								</tr>
+								<tr>
+									<td class="trw" width="200">작성자</td>
+									<td id="writer"><%=user.id%></td>
+								</tr>
+								<tr>
+									<td class="trw" width="200">파일</td>
+									<td id="file">
+										<input class="inputText2" type="file" name="attachment">
+									</td>
+								</tr>
+								<tr>
+									<td class="trw" width="200">내용</td>
+									<td>
+										<textarea rows="30" cols="100" name="content"><%=modify.content%></textarea>
+									</td>
+								</tr>
+							</tbody>
+			                <input type="hidden" name="bid" value="<%=modify.board_id%>">
+						</table>
+						<!-- table :e -->
+						
+						<!-- paging & search :s -->
+						<input type="button" value="취소"  class="subbtn3" id="cancelBtn">
+						<input type="reset" value="다시하기" class="subbtn3">
+						<span class="rightButton" >
+							<button type="button" id="submit" class="mainbtn">
+							<% if(modify){ %>
+								수정하기
+							<% } else{ %>
+								저장하기
+							<% } %>
+							</button>
+						</span>
+						<!-- paging & search :e -->
+						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+					</form>
+				</div>
+				<!-- 컨텐츠영역 txt :e -->
+
+			</div>
+			<!-- container :e -->
+
+		</div>
+		<!-- contentsWrap :e -->
+
+		
+		<!-- footerWrap :s -->
+		<% include ../include/footer/footer.ejs %>
+		<!-- footerWrap :e -->
+	</div>
+</body>
+</html>

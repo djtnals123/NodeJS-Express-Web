@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";
+
+/*! signIn.css v1 */
+
+#wrap {position:relative;min-height:100%;}
+#header {position: relative; width:720px;height:138px; padding:62px 0 0;margin: 0 auto/*!important*/; }
+#header .h_logo {overflow:hidden; display:block; width:330px; height:88px; margin: 0 auto ;line-height:999px; background: url(../img/signIn/h_logo.png) no-repeat;}
+
+#container {width:720px;margin: 0 auto; padding-bottom: 0; background :#fff;}
+#content {padding:88px 126px;}
+
+
+fieldset, img {border: 0; }  
+label {display:block;cursor:pointer;}
+.login_form {clear:both;}
+.blind {font-size:0;line-height: 0;position: absolute;top: 0;left: 0;visibility: hidden;overflow: hidden;width: 1px;height: 1px;}
+.input_row {position:relative;height:20px;margin:0 0 15px;padding:10px 10px;border:solid 1px #dadada;background:#f7f7f9;}
+.input_box {display:block;overflow:hidden;}
+.lbl {position: absolute;top: 16px;left: 15px;font-size: 15px;line-height: 16px;z-index: 8;color:#999; }
+.int {position: relative; font-size: 15px;line-height: 16px;z-index: 9;width: 100%;height: 16px;padding: 2px 0 6px;color: #000;border: none;background: #f7f7f9;-webkit-appearance: none;}   
+.btn_login {display:block;width:100%;height:55px;line-height: 55px;  margin:30px 0 0 0; font-size:18px; font-weight:400;padding-top:1px;cursor:pointer;
+    text-align:center; color:#fff; border:none; border-radius:0; background-color: #031230; -webkit-appearance:none;}
+.btn_cancel {display:block;width:100%;height:55px;line-height: 55px;  margin:30px 0 0 0; font-size:18px; font-weight:400;padding-top:1px;cursor:pointer;
+	text-align:center; color:#000000; border:solid 1px #aaaaaa; border-radius:0; background-color: #ffffff; -webkit-appearance:none;}     
+.chkbox {position: relative;top:3px;left:0;width:20px;height:20px;cursor:pointer;margin-right: 5px}
+ .chkbox_area {margin-right: 20px}
+.find_info {overflow: hidden; font-size:14px;line-height:14px;padding-top:65px;text-align:center;color:#555;font-weight: 600;}
+.find_info ul{margin: 0 auto;display: inline-block;}
+.find_info li{float:left;padding-right: 10px; margin-right: 10px ;  background: url(../img/signIn/bar.png) no-repeat right 4px;}
+.find_info li:last-child{padding-right:0px; margin-right:0px ;  background:none;}
+
+#footer {position:relative;width:720px;margin:0 auto;padding:110px 0 15px;text-align:center;}
+#footer address {font: 9px/14px Verdana;color:#858588;}
+#footer address span {display:block;}
+#footer .f_logo {margin:10px auto;width:112px;height: 25px;background: url(../img/signIn/f_logo.png) no-repeat }
+
+/* join area */
+.join_input_row {position:relative;height:20px;margin:0 0 0px;padding:10px 10px;border:solid 1px #dadada;background:#f7f7f9;}
+.none_input_row {position:relative;height:20px;margin:0 0 0px;padding:10px 10px;}
+#container h4{position:relative;margin-top: 30px;margin-bottom:10px;padding-left:22px;padding-top:0;background: url(../img/layout/h4_bul.png) no-repeat left 8px;font-family: 'nsr','Malgun Gothic';font-size: 22px;line-height: 160%;font-weight: 600;color: #000;}
+#container h4:first-child{margin-top:0;}
+
+/* table */
+table caption{text-indent:-100000px;font-size:0;line-height:0;}
+.tbl_basic{display:table;margin-bottom:10px;width:100%;border-top:3px solid transparent;border-bottom:3px solid transparent;border-collapse:separate;border-collapse:collapse}
+.tbl_basic th,
+.tbl_basic td{padding:12px 10px;border-left:1px solid transparent;border-bottom:1px solid transparent;margin-left:-1px;vertical-align:middle;word-wrap:break-word;word-break:keep-all;color:#464646;}
+.tbl_basic th:first-child,
+.tbl_basic td:first-child{border-left:none;}
+.tbl_basic th.trw1,
+.tbl_basic td.trw1{border-right:none; width: 30%;}
+.tbl_basic th.trw,
+.tbl_basic td.trw{border-right:none;}
+.tbl_basic tbody th,
+.tbl_basic thead th{vertical-align:middle;}
+.tbl_basic thead th,
+.tbl_basic tfoot th{background-image:none;}
+.tbl_basic tbody th{color:#333;}
+.tbl_basic tbody tr:first-child td {border-top: 1px solid #6b6b6b;}
+.tbl_basic thead th{color:#333;font-size:15px;background:#f0f0f5;}
+
+.tbl_basic{border-top-color:#0a0a0a;border-bottom-color:#0a0a0a;}
+.tbl_basic th,
+.tbl_basic td{border-left-color:#d8dbe0;border-bottom-color:#d8dbe0; background: #fff;}
+.tbl_basic tbody th{background-color:#f9f9f9;}
+
+/* text area */
+#content1 {padding:88px 50px;}
+.text_area {font-size: 13px ; border: 1px solid #999999; padding: 20px 20px; height: 300px; overflow: auto;}
+
+.select_box{width:130px;height:30px; text-align:center; font-size:15px; text-align:center; vertical-align:middle; border-radius:1;}
